@@ -30,12 +30,6 @@
     src: catalogue.service
     dest: /etc/systemd/system/catalogue.service
 
-- name: Loading system d
-  ansible.builtin.systemd:
-    name: catalogue.service
-    state: started
-    daemon_reload: true
-
 - name: Copy module of mongod
   ansible.builtin.copy:
     src: mongo.repo
@@ -45,3 +39,15 @@
   ansible.builtin.yum:
     name: mongodb-org-shell
     state: installed
+
+- name: Loading system d
+  ansible.builtin.systemd:
+    name: catalogue.service
+    state: started
+    daemon_reload: true
+
+- name: Load Schema
+  community.mongod.mongodb_shell:
+    login_host: mongodb-dev.mithundevops.online
+    file: "/app/schema/catalogue.js"
+    idempotent: yes
