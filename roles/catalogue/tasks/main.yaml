@@ -36,11 +36,6 @@
     state: started
     daemon_reload: true
 
-- name: Install MongoDB Server
-  ansible.builtin.yum:
-    name: mongodb-org
-    state: installed
-
 - name: Copy module
   ansible.builtin.copy:
     name: copy mongo repo
