@@ -36,22 +36,22 @@
     src: catalogue.service
     dest: /etc/systemd/system/catalogue.service
 
-- name: Copy module of mongod
-  ansible.builtin.copy:
-    src: mongo.repo
-    dest: /etc/yum.repos.d/mongo.repo
-
-- name: Install mongoshell
-  ansible.builtin.yum:
-    name: mongodb-org-shell
-    state: installed
-
 - name: Start Catalogue service
   ansible.builtin.systemd:
     name: catalogue
     state: restarted
     enabled: yes
     daemon_reload: true
+
+- name: Copy module of mongod
+  ansible.builtin.copy:
+    src: mongodb.repo
+    dest: /etc/yum.repos.d/mongodb.repo
+
+- name: Install mongoshell
+  ansible.builtin.yum:
+    name: mongodb-org-shell
+    state: installed
 
 - name: Load Schema
   community.mongodb.mongodb_shell:
