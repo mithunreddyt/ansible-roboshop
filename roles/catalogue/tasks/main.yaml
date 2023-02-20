@@ -36,8 +36,8 @@
     state: started
     daemon_reload: true
 
--  name: Install MongoDB Server
-   ansible.builtin.yum:
+- name: Install MongoDB Server
+  ansible.builtin.yum:
     name: mongodb-org
     state: installed
 
