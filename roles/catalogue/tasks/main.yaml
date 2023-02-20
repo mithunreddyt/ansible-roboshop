@@ -27,7 +27,6 @@
 
 - name: Copy module
   ansible.builtin.copy:
-    name: copy catalogue service to systemlocation
     src: catalogue.service
     dest: /etc/systemd/system/catalogue.service
 
