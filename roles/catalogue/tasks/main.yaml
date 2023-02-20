@@ -36,9 +36,8 @@
     state: started
     daemon_reload: true
 
-- name: Copy module
+- name: Copy module of mongod
   ansible.builtin.copy:
-    name: copy mongo repo
     src: mongo.repo
     dest: /etc/yum.repos.d/mongo.repo
 
