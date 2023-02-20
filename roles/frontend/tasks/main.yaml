@@ -24,3 +24,4 @@
     src: /files/roboshop.conf
     dest: /etc/nginx/default.d/roboshop.conf
     follow: no
+    remote_src: yes
