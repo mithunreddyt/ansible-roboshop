@@ -8,6 +8,11 @@
     path: /usr/share/nginx/html
     state: absent
 
+- name: create the directory
+  ansible.builtin.file:
+    path: /usr/share/nginx/html
+    state: directory
+
 - name: Download content and unzip
   ansible.builtin.unarchive:
     src: https://roboshop-artifacts.s3.amazonaws.com/frontend.zip
