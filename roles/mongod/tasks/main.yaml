@@ -4,7 +4,7 @@
     remote_src: yes
 
 - name: install mongodb
-  ansible.built.yum:
+  ansible.builtin.yum:
     name: mongodb-org
     state: installed
 
