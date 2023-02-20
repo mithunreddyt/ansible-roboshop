@@ -1,3 +1,0 @@
-- name: Hello from frontend
-  debug:
-    - msg: "Hello from frontend"
