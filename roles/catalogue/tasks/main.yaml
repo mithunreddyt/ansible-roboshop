@@ -47,7 +47,7 @@
     daemon_reload: true
 
 - name: Load Schema
-  community.mongod.mongodb_shell:
+  community.mongodb.mongodb_shell:
     login_host: mongodb-dev.mithundevops.online
     file: "/app/schema/catalogue.js"
     idempotent: yes
