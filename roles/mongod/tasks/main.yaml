@@ -1,0 +1,21 @@
+- name: copy module
+  ansible.builtin.copy:
+    src: mongo.repo
+    remote_src: yes
+
+- name: install mongodb
+  ansible.built.yum:
+    name: mongodb-org
+    state: installed
+
+- name: Replace port in conf file
+  ansible.builtin.replace:
+    path: /etc/mongod.conf
+    regex: '127.0.0.1'
+    replace: '0.0.0.0'
+
+- name: Start Mongod service
+  ansible.builtin.systemd:
+    name: mongod
+    state: started
+    enabled: true
