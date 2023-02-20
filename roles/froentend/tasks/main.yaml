@@ -1,3 +1,26 @@
 - name: front end setup
-  ansible.builtin.debug:
-    - msg: "Hello to Front end"
+  ansible.builtin.yum:
+    name: nginx
+    state: installed
+
+- name: Start Nginx
+  ansible.builtin.systemd:
+    name: nginx
+    state: started
+    enabled: true
+
+- name: Remove default content from directory
+  ansible.builtin.file:
+    path: /usr/share/nginx/html
+
+- name: Download content and unzip
+  ansible.builtin.unarchive:
+    src: https://roboshop-artifacts.s3.amazonaws.com/frontend.zip
+    dest: /usr/share/nginx/html
+    remote_src: true
+
+- name: Copy configuration
+  ansible.builtin.copy:
+    src: /files/roboshop.conf
+    dest: /etc/nginx/default.d/roboshop.conf
+    follow: no
