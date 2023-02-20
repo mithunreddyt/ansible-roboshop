@@ -1,21 +1,21 @@
 - name: copy Mongodb yum repo file
   ansible.builtin.copy:
-   src: mongo.repo
-   dest: /etc/yum.repos.d/mongo.repo
+    src: mongo.repo
+    dest: /etc/yum.repos.d/mongo.repo
 
 - name: Install MongoDB Server
   ansible.builtin.yum:
-   name: mongodb-org
-   state: installed
+    name: mongodb-org
+    state: installed
 
 - name: Replace port in conf file
   ansible.builtin.replace:
-   path: /etc/mongod.conf
-   regexp: '127.0.0.1'
-   replace: '0.0.0.0'
+    path: /etc/mongod.conf
+    regexp: '127.0.0.1'
+    replace: '0.0.0.0'
 
 - name: Start Mongod service
   ansible.builtin.systemd:
-   name: mongod
-   state: started
-   enabled: true
+    name: mongod
+    state: started
+    enabled: true

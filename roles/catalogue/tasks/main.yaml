@@ -1,0 +1,54 @@
+- name: Running vendor provide scripts
+  ansible.builtin.shell: curl -sL https://rpm.nodesource.com/setup_lts.x | bash
+
+- name: Install Nodejs
+  ansible.builtin.yum:
+    name: nodejs
+    state: installed
+
+- name: Add application user
+  ansible.builtin.user:
+    name: roboshop
+
+- name: create directory
+  ansible.builtin.file:
+    path: /app
+    state: directory
+
+- name: Download unarchive file
+  ansible.builtin.unarchive:
+    src: https://roboshop-artifacts.s3.amazonaws.com/catalogue.zip
+    dest: /app
+    remote_src: yes
+
+- name: Install NPM
+  ansible.builtin.npm:
+    path: /app
+
+- name: Copy module
+  ansible.builtin.copy:
+    name: copy catalogue service to systemlocation
+    src: catalogue.service
+    dest: /etc/systemd/system/catalogue.service
+
+- name: Loading system d
+  ansible.builtin.systemd:
+    name: catalogue.service
+    state: start
+    daemon_reload: true
+
+-  name: Install MongoDB Server
+   ansible.builtin.yum:
+    name: mongodb-org
+    state: installed
+
+- name: Copy module
+  ansible.builtin.copy:
+    name: copy mongo repo
+    src: mongo.repo
+    dest: /etc/yum.repos.d/mongo.repo
+
+- name: Install mongoshell
+  ansible.builtin.yum:
+    name: mongodb-org-shell
+    state: installed
