@@ -33,7 +33,7 @@
 - name: Loading system d
   ansible.builtin.systemd:
     name: catalogue.service
-    state: start
+    state: started
     daemon_reload: true
 
 -  name: Install MongoDB Server
