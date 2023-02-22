@@ -7,8 +7,7 @@
     state: installed
 
 - name: Include app-preq yaml
-  ansible.builtin.include_tasks:
-    file: app-preq.yaml
+  ansible.builtin.include_tasks: "app-prereq.yaml"
 
 - name: Install Nodejs dependencies
   ansible.builtin.npm:
