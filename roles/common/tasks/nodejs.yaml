@@ -14,3 +14,7 @@
   ansible.builtin.npm:
     path: /app
     state: latest
+
+- name: Include systemD yaml
+  ansible.builtin.include_tasks:
+    file: systemD.yaml
