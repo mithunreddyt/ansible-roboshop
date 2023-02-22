@@ -19,6 +19,6 @@
   ansible.builtin.include_tasks:
     file: systemD.yaml
 
-- name: Include systemD yaml
+- name: Include mongodb yaml
   ansible.builtin.include_tasks:
     file: mongodb.yaml
