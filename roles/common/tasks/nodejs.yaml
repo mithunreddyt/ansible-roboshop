@@ -1,0 +1,16 @@
+- name: Configure NodeJS repo
+  ansible.builtin.shell: curl -sL https://rpm.nodesource.com/setup_lts.x | bash
+
+- name: Install NodeJS
+  ansible.builtin.yum:
+    name: nodejs
+    state: installed
+
+- name: Include app-preq yaml
+  ansible.builtin.include_tasks:
+    file: app-preq.yaml
+
+- name: Install Nodejs dependencies
+  ansible.builtin.npm:
+    path: /app
+    state: latest
