@@ -1,4 +1,4 @@
-- name: import nodejs task from common
+- name: import nodejs tasks from common
   ansible.builtin.import_role:
     name: common
     tasks_from: nodejs.yaml
