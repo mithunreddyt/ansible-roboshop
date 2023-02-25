@@ -21,4 +21,4 @@
 
 - name: Include mongodb yaml
   ansible.builtin.include_tasks:
-    file: mongodb.yaml
+    file: mongodb-schema.yaml
