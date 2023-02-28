@@ -1,17 +1,18 @@
-- name: Configure YUm Repos
-  ansible.builtin.shell: curl -s {{ item }} |  bash
+#file: noinspection YAMLSchemaValidation
+- name: Configure Yum repos
+  ansible.builtin.shell: curl -s {{item}} || bash
   loop:
     - https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh
     - https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh
 
-- name: Install Erlang & RabbitMQ
+- name: Install Erlang and Rabbit mq
   ansible.builtin.yum:
-    name:
-      - erlang
-      - rabbitmq-server
-    state: installed
+   name:
+    - erlang
+    - rabbitmq-server
+   state: installed
 
-- name: Start RabbitMQ Service
+- name: Start Rabbitmq Service
   ansible.builtin.systemd:
     name: rabbitmq-server
     state: restarted
@@ -27,3 +28,5 @@
     write_priv: .*
     state: present
     tags: administrator
+
+
