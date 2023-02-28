@@ -2,7 +2,7 @@
   ansible.builtin.shell: yum install python36 gcc python3-devel -y
 
 - name: Add application user
-  ansible.builtin.import_tasks:
+  ansible.builtin.include_tasks:
    name: app-preq.yaml
 
 - name: Download Python Dependencies
