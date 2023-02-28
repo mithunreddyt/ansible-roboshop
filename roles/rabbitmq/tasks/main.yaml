@@ -18,7 +18,7 @@
     enabled: yes
 
 - name: Add Application User
-  community.rabbitmq.rabbitme_user:
+  community.rabbitmq.rabbitmq_user:
     user: roboshop
     password: "{{roboshop_rabbitmq_password}}"
     vhost: /
