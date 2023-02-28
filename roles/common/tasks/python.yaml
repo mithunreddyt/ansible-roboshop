@@ -7,8 +7,7 @@
     state: installed
 
 - name: Add application user
-  ansible.builtin.include_tasks:
-   name: app-preq.yaml
+  ansible.builtin.include_tasks: "app-preq.yaml"
 
 - name: Download Python Dependencies
   ansible.builtin.pip:
