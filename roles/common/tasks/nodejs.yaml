@@ -17,8 +17,8 @@
 
 - name: Include systemD yaml
   ansible.builtin.include_tasks:
-    file: systemD.yaml
+    file: systemd.yaml
 
-- name: Include mongodb yaml
-  ansible.builtin.include_tasks:
-    file: mongodb-schema.yaml
+- name: Include Load Schema
+  ansible.builtin.include_tasks: "{{schema_type}}-schema".yaml
+  when: schema_load
