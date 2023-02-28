@@ -1,5 +1,10 @@
 - name: Install python
-  ansible.builtin.shell: yum install python36 gcc python3-devel -y
+  ansible.builtin.yum:
+    name:
+      - python36
+      - gcc
+      - python3-devel
+    state: installed
 
 - name: Add application user
   ansible.builtin.include_tasks:
