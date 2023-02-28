@@ -1,3 +1,4 @@
+#file: noinspection YAMLSchemaValidation
 - name: Configure Yum repos
   ansible.builtin.shell: curl -s {{item}} || bash
   loop:
@@ -6,10 +7,10 @@
 
 - name: Install Erlang and Rabbit mq
   ansible.builtin.yum:
-    name:
-      - erlang
-      - rabbitmq-server
-    state: installed
+   name:
+     - erlang
+     - rabbitmq-server
+   state: installed
 
 - name: Start Rabbitmq Service
   ansible.builtin.systemd:
