@@ -13,4 +13,3 @@
     login_host: mongodb-dev.mithundevops.online
     file: "/app/schema/{{component}}.js"
     idempotent: yes
-    import_tasks: "{{schema_type}}-schema.yaml"

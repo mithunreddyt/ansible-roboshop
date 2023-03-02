@@ -21,4 +21,5 @@
 
 - name: Include Load Schema
   ansible.builtin.include_tasks: "{{schema_type}}-schema.yaml"
+  import_tasks: "{{schema_type}}-schema.yaml"
   when: schema_load
