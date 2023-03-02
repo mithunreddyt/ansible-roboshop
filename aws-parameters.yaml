@@ -23,6 +23,8 @@
         - {name: "dev.payment.USER_PORT", value: "80" }
         - {name: "dev.payment.AMQP_HOST", value: "rabbitmq-dev.mithundevops.online" }
         - {name: "dev.payment.AMQP_USER", value: "roboshop" }
+        - { name: "dev.dispatch.AMQP_HOST", value: "rabbitmq-dev.mithundevops.online" }
+        - { name: "dev.dispatch.AMQP_USER", value: "roboshop" }
         - {name: "dev.shipping.CART_ENDPOINT", value: "cart-dev.mithundevops.online:80" }
         - {name: "dev.shipping.DB_HOST", value: "mysql-dev.mithundevops.online" }
         - {name: "dev.user.MONGO", value: "true" }
